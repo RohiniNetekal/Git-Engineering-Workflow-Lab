@@ -1,0 +1,40 @@
+name: Documentation quality
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '*.md'
+      - '**/*.md'
+      - '.markdownlint-cli2.jsonc'
+      - '.github/workflows/docs-quality.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - '*.md'
+      - '**/*.md'
+      - '.markdownlint-cli2.jsonc'
+      - '.github/workflows/docs-quality.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: docs-quality-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  markdownlint:
+    name: Lint Markdown
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Check Markdown style
+        uses: DavidAnson/markdownlint-cli2-action@v25
+        with:
+          globs: |
+            **/*.md
+          config: .markdownlint-cli2.jsonc
