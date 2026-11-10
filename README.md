@@ -115,4 +115,10 @@ Avoid vague messages such as "update", "changes" or "final".
 
 ## Planned exercises
 
-Conflict resolution -> rebase -> cherry-pick -> reflog recovery -> GitHub Actions CI -> release/tag workflow.
+Conflict resolution -> rebase -> cherry-pick -> reflog recovery -> inspect the Markdown CI workflow -> adapt the Maven CI template in a real Spring Boot repository -> release/tag workflow.
+
+## CI with GitHub Actions
+
+This repository is a documentation/workflow lab rather than a Maven application. Its [documentation quality workflow](.github/workflows/docs-quality.yml) runs Markdown linting on relevant pull requests and pushes with only contents: read permission and no secrets.
+
+For a real Spring Boot service, use the [Java backend CI/CD implementation guide](docs/java-backend-ci-cd.md). It explains Maven clean verify, Surefire vs Failsafe, Testcontainers, a Java version matrix, container-image promotion, deployment separation and OIDC. The Maven workflow is a copyable template; it is not claimed to run in this documentation-only repository.
