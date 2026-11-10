@@ -124,7 +124,7 @@ What each part does:
 5. permissions: contents: read avoids giving a test job write access it does not need.
 6. The concurrency group cancels obsolete runs for the same branch/ref when newer commits arrive.
 
-If the project has no Maven Wrapper, install/use a known Maven version and run Maven with --batch-mode --no-transfer-progress clean verify. Adding and committing the wrapper is generally more reproducible.
+If the project has no Maven Wrapper, install/use a known Maven version and run **mvn --batch-mode --no-transfer-progress clean verify**. Adding and committing the wrapper is generally more reproducible.
 
 ## 4. Add integration tests without hard-coding CI infrastructure
 
